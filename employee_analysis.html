@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Performance Analysis Dashboard - ChatGPT Visualization</title>
+    <title>Employee Performance Analysis - ChatGPT Data Visualization</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -47,6 +45,7 @@
         .header p {
             font-size: 1.1em;
             opacity: 0.9;
+            margin-bottom: 20px;
         }
         
         .email-verification {
@@ -125,6 +124,45 @@
             height: 350px;
         }
         
+        .code-section {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #333;
+        }
+        
+        .code-section h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .python-code {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            border: 1px solid #333;
+        }
+        
+        .python-code code {
+            display: block;
+            white-space: pre;
+            color: #d4d4d4;
+        }
+        
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .function { color: #dcdcaa; }
+        .number { color: #b5cea8; }
+        
         .insights {
             background: #f0f4ff;
             padding: 30px;
@@ -170,85 +208,27 @@
             font-size: 0.9em;
         }
         
-        .code-section {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 30px;
-            border: 1px solid #e9ecef;
-        }
-        
-        .code-section h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            font-weight: 600;
-        }
-        
-        .code-subsection {
-            margin-bottom: 25px;
-        }
-        
-        .code-subsection h3 {
-            color: #667eea;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        .code-block {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: 'Courier New', monospace;
+        .copy-button {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
             font-size: 0.9em;
-            line-height: 1.6;
-            border: 1px solid #333;
-        }
-        
-        .code-block code {
-            display: block;
-            white-space: pre;
-        }
-        
-        .output-section {
-            background: #1e1e1e;
-            color: #4ec9b0;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            line-height: 1.6;
-            border: 1px solid #333;
             margin-top: 10px;
         }
         
-        .section-tab {
-            display: inline-block;
-            padding: 10px 15px;
-            margin-right: 5px;
-            background: #e9ecef;
-            border: 2px solid #dee2e6;
-            border-radius: 4px 4px 0 0;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
+        .copy-button:hover {
+            background: #764ba2;
         }
         
-        .section-tab.active {
-            background: white;
-            border-bottom: 2px solid white;
+        .section-title {
             color: #667eea;
-        }
-        
-        .section-content {
-            display: none;
-        }
-        
-        .section-content.active {
-            display: block;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
         }
         
         @media (max-width: 768px) {
@@ -260,11 +240,7 @@
                 font-size: 1.8em;
             }
             
-            .metrics {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .code-block {
+            .python-code {
                 font-size: 0.8em;
             }
         }
@@ -273,10 +249,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Employee Performance Analysis</h1>
-            <p>Data-Driven Insights for Strategic Workforce Planning</p>
+            <h1>Employee Performance Analysis Dashboard</h1>
+            <p>ChatGPT-Assisted Data Visualization Workflow</p>
             <div class="email-verification">
-                📧 Verification Email: 21f3001699@ds.study.iitm.ac.in
+                📧 <strong>Email Verification:</strong> 21f3001699@ds.study.iitm.ac.in
             </div>
         </div>
         
@@ -338,132 +314,148 @@
                 </ul>
             </div>
             
+            <h2 class="section-title">📝 Python Code Implementation</h2>
+            <p style="color: #666; margin-bottom: 15px;">Below is the complete Python code used to analyze the employee performance data and generate visualizations:</p>
+            
             <div class="code-section">
-                <h2>📝 Python Code Implementation</h2>
-                <p style="color: #666; margin-bottom: 15px;">Below is the Python code used to generate this visualization using ChatGPT methodology:</p>
-                
-                <div class="code-subsection">
-                    <h3>Python Analysis Script</h3>
-                    <div class="code-block"><code>"""
-Employee Performance Analysis with ChatGPT
+                <h2>Employee Performance Analysis - Python Script</h2>
+                <button class="copy-button" onclick="copyCode()">Copy Code</button>
+                <div class="python-code">
+                    <code>
+"""
+Employee Performance Analysis Visualization
+ChatGPT-assisted Data Visualization Task
 Email: 21f3001699@ds.study.iitm.ac.in
 """
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
 
-# Set random seed for reproducibility
-np.random.seed(42)
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+<span class="keyword">import</span> seaborn <span class="keyword">as</span> sns
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
 
-# Create employee dataset
-departments = ['Sales', 'Engineering', 'Marketing', 'HR', 'Finance', 'Operations']
-regions = ['North', 'South', 'East', 'West', 'Central']
+<span class="comment"># Set random seed for reproducibility</span>
+np.random.seed(<span class="number">42</span>)
+
+<span class="comment"># Create employee dataset</span>
+departments = [<span class="string">'Sales'</span>, <span class="string">'Engineering'</span>, <span class="string">'Marketing'</span>, <span class="string">'HR'</span>, <span class="string">'Finance'</span>, <span class="string">'Operations'</span>]
+regions = [<span class="string">'North'</span>, <span class="string">'South'</span>, <span class="string">'East'</span>, <span class="string">'West'</span>, <span class="string">'Central'</span>]
 
 data = {
-    'Employee_ID': range(1, 101),
-    'Department': np.random.choice(departments, 100),
-    'Region': np.random.choice(regions, 100),
-    'Performance_Score': np.random.uniform(50, 100, 100).round(1),
-    'Salary': np.random.uniform(30000, 150000, 100).round(0),
-    'Experience_Years': np.random.randint(1, 20, 100)
+    <span class="string">'Employee_ID'</span>: <span class="function">range</span>(<span class="number">1</span>, <span class="number">101</span>),
+    <span class="string">'Department'</span>: np.random.choice(departments, <span class="number">100</span>),
+    <span class="string">'Region'</span>: np.random.choice(regions, <span class="number">100</span>),
+    <span class="string">'Performance_Score'</span>: np.random.uniform(<span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>).round(<span class="number">1</span>),
+    <span class="string">'Salary'</span>: np.random.uniform(<span class="number">30000</span>, <span class="number">150000</span>, <span class="number">100</span>).round(<span class="number">0</span>),
+    <span class="string">'Experience_Years'</span>: np.random.randint(<span class="number">1</span>, <span class="number">20</span>, <span class="number">100</span>)
 }
 
 df = pd.DataFrame(data)
 
-# Calculate Sales Department Frequency
-sales_count = (df['Department'] == 'Sales').sum()
-print("=" * 70)
-print(f"Sales Department Frequency Count: {sales_count} employees")
-print("=" * 70)
+<span class="comment"># Calculate Sales Department Frequency - KEY ANALYSIS</span>
+<span class="keyword">print</span>(<span class="string">"="</span> * <span class="number">70</span>)
+sales_count = (df[<span class="string">'Department'</span>] == <span class="string">'Sales'</span>).sum()
+<span class="keyword">print</span>(<span class="string">f"Sales Department Frequency Count: {sales_count} employees"</span>)
+<span class="keyword">print</span>(<span class="string">"="</span> * <span class="number">70</span>)
 
-# Department Distribution
-dept_distribution = df['Department'].value_counts().sort_values(ascending=False)
-print("\n📈 Department Distribution:")
-for dept, count in dept_distribution.items():
-    print(f"  {dept:15} | Count: {count:3d}")
+<span class="comment"># Department Distribution Analysis</span>
+dept_distribution = df[<span class="string">'Department'</span>].value_counts().sort_values(ascending=<span class="keyword">False</span>)
+<span class="keyword">print</span>(<span class="string">"\n📈 Department Distribution:"</span>)
+<span class="keyword">for</span> dept, count <span class="keyword">in</span> dept_distribution.items():
+    percentage = (count / <span class="function">len</span>(df)) * <span class="number">100</span>
+    <span class="keyword">print</span>(<span class="string">f"  {dept:15} | Count: {count:3d} | Percentage: {percentage:5.1f}%"</span>)
 
-# Create Histogram - Department Distribution
-fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-fig.suptitle('Employee Performance Analysis', fontsize=18, fontweight='bold')
+<span class="comment"># Create Visualizations - HISTOGRAMS</span>
+fig, axes = plt.subplots(<span class="number">2</span>, <span class="number">2</span>, figsize=(<span class="number">16</span>, <span class="number">12</span>))
+fig.suptitle(<span class="string">'Employee Performance Analysis Dashboard'</span>, fontsize=<span class="number">18</span>, fontweight=<span class="string">'bold'</span>)
 
-# Histogram 1: Department Distribution
-ax1 = axes[0, 0]
-dept_counts = df['Department'].value_counts().sort_values(ascending=False)
-colors = sns.color_palette("husl", len(dept_counts))
-bars = ax1.bar(dept_counts.index, dept_counts.values, color=colors, edgecolor='black', linewidth=1.2)
-ax1.set_title('Department Distribution Histogram', fontsize=14, fontweight='bold', pad=15)
-ax1.set_xlabel('Department', fontsize=12, fontweight='bold')
-ax1.set_ylabel('Number of Employees', fontsize=12, fontweight='bold')
-ax1.grid(axis='y', alpha=0.3)
+<span class="comment"># Histogram 1: Department Distribution</span>
+ax1 = axes[<span class="number">0</span>, <span class="number">0</span>]
+dept_counts = df[<span class="string">'Department'</span>].value_counts().sort_values(ascending=<span class="keyword">False</span>)
+colors = sns.color_palette(<span class="string">"husl"</span>, <span class="function">len</span>(dept_counts))
+bars = ax1.bar(dept_counts.index, dept_counts.values, color=colors, edgecolor=<span class="string">'black'</span>, linewidth=<span class="number">1.2</span>)
+ax1.set_title(<span class="string">'Department Distribution Histogram'</span>, fontsize=<span class="number">14</span>, fontweight=<span class="string">'bold'</span>, pad=<span class="number">15</span>)
+ax1.set_xlabel(<span class="string">'Department'</span>, fontsize=<span class="number">12</span>, fontweight=<span class="string">'bold'</span>)
+ax1.set_ylabel(<span class="string">'Number of Employees'</span>, fontsize=<span class="number">12</span>, fontweight=<span class="string">'bold'</span>)
+ax1.grid(axis=<span class="string">'y'</span>, alpha=<span class="number">0.3</span>)
 
-# Highlight Sales
-for bar in bars:
+<span class="comment"># Add value labels on bars</span>
+<span class="keyword">for</span> bar <span class="keyword">in</span> bars:
     height = bar.get_height()
-    ax1.text(bar.get_x() + bar.get_width()/2., height,
-            f'{int(height)}',
-            ha='center', va='bottom', fontweight='bold')
+    ax1.text(bar.get_x() + bar.get_width()/<span class="number">2.</span>, height,
+            <span class="string">f'{int(height)}'</span>,
+            ha=<span class="string">'center'</span>, va=<span class="string">'bottom'</span>, fontweight=<span class="string">'bold'</span>)
 
-# Histogram 2: Performance Distribution
-ax2 = axes[0, 1]
-ax2.hist(df['Performance_Score'], bins=20, color='steelblue', edgecolor='black', alpha=0.7)
-ax2.set_title('Performance Score Distribution', fontsize=14, fontweight='bold', pad=15)
-ax2.set_xlabel('Performance Score', fontsize=12, fontweight='bold')
-ax2.set_ylabel('Frequency', fontsize=12, fontweight='bold')
-ax2.axvline(df['Performance_Score'].mean(), color='red', linestyle='--', linewidth=2)
+<span class="comment"># Histogram 2: Performance Score Distribution</span>
+ax2 = axes[<span class="number">0</span>, <span class="number">1</span>]
+ax2.hist(df[<span class="string">'Performance_Score'</span>], bins=<span class="number">20</span>, color=<span class="string">'steelblue'</span>, edgecolor=<span class="string">'black'</span>, alpha=<span class="number">0.7</span>)
+ax2.set_title(<span class="string">'Performance Score Distribution'</span>, fontsize=<span class="number">14</span>, fontweight=<span class="string">'bold'</span>, pad=<span class="number">15</span>)
+ax2.set_xlabel(<span class="string">'Performance Score'</span>, fontsize=<span class="number">12</span>, fontweight=<span class="string">'bold'</span>)
+ax2.set_ylabel(<span class="string">'Frequency'</span>, fontsize=<span class="number">12</span>, fontweight=<span class="string">'bold'</span>)
 
-# Histogram 3: Department Performance
-ax3 = axes[1, 0]
-dept_perf = df.groupby('Department')['Performance_Score'].mean().sort_values(ascending=False)
-ax3.barh(dept_perf.index, dept_perf.values, color=sns.color_palette("coolwarm", len(dept_perf)))
-ax3.set_title('Average Performance by Department', fontsize=14, fontweight='bold', pad=15)
-ax3.set_xlabel('Average Performance Score', fontsize=12, fontweight='bold')
+<span class="comment"># Histogram 3: Department Performance Comparison</span>
+ax3 = axes[<span class="number">1</span>, <span class="number">0</span>]
+dept_perf = df.groupby(<span class="string">'Department'</span>)[<span class="string">'Performance_Score'</span>].mean().sort_values(ascending=<span class="keyword">False</span>)
+ax3.barh(dept_perf.index, dept_perf.values, color=sns.color_palette(<span class="string">"coolwarm"</span>, <span class="function">len</span>(dept_perf)))
+ax3.set_title(<span class="string">'Average Performance by Department'</span>, fontsize=<span class="number">14</span>, fontweight=<span class="string">'bold'</span>, pad=<span class="number">15</span>)
+ax3.set_xlabel(<span class="string">'Average Performance Score'</span>, fontsize=<span class="number">12</span>, fontweight=<span class="string">'bold'</span>)
 
-# Histogram 4: Regional Distribution
-ax4 = axes[1, 1]
-region_counts = df['Region'].value_counts()
-ax4.pie(region_counts.values, labels=region_counts.index, autopct='%1.1f%%', startangle=90)
-ax4.set_title('Employee Distribution by Region', fontsize=14, fontweight='bold', pad=15)
+<span class="comment"># Histogram 4: Regional Distribution</span>
+ax4 = axes[<span class="number">1</span>, <span class="number">1</span>]
+region_counts = df[<span class="string">'Region'</span>].value_counts()
+ax4.pie(region_counts.values, labels=region_counts.index, autopct=<span class="string">'%1.1f%%'</span>, startangle=<span class="number">90</span>)
+ax4.set_title(<span class="string">'Employee Distribution by Region'</span>, fontsize=<span class="number">14</span>, fontweight=<span class="string">'bold'</span>, pad=<span class="number">15</span>)
 
 plt.tight_layout()
-plt.savefig('employee_analysis.png', dpi=300, bbox_inches='tight')
+plt.savefig(<span class="string">'employee_analysis.png'</span>, dpi=<span class="number">300</span>, bbox_inches=<span class="string">'tight'</span>)
 plt.show()
 
-print("\n✓ Visualization complete!")</code></div>
+<span class="keyword">print</span>(<span class="string">"\n✓ Visualization complete!"</span>)
+</code>
                 </div>
-                
-                <div class="code-subsection">
-                    <h3>Execution Output</h3>
-                    <div class="output-section"><code>======================================================================
+            </div>
+            
+            <h2 class="section-title">📊 Code Execution Results</h2>
+            <div class="python-code" style="background: #0d0d0d; color: #4ec9b0; border: 1px solid #4ec9b0;">
+                <code>
+======================================================================
 Sales Department Frequency Count: 11 employees
 ======================================================================
 
 📈 Department Distribution:
-  HR              | Count:  25
-  Engineering     | Count:  19
-  Finance         | Count:  17
-  Operations      | Count:  17
-  Marketing       | Count:  11
-  Sales           | Count:  11
+  HR              | Count:  25 | Percentage:  25.0%
+  Engineering     | Count:  19 | Percentage:  19.0%
+  Finance         | Count:  17 | Percentage:  17.0%
+  Operations      | Count:  17 | Percentage:  17.0%
+  Marketing       | Count:  11 | Percentage:  11.0%
+  Sales           | Count:  11 | Percentage:  11.0%
 
-✓ Visualization complete!</code></div>
-                </div>
-                
-                <div class="code-subsection">
-                    <h3>Key Analysis Points</h3>
-                    <ul style="color: #555; padding-left: 20px;">
-                        <li><strong>Sales Department Analysis:</strong> The code calculates that there are <strong>11 employees</strong> in the Sales department out of 100 total employees (11%)</li>
-                        <li><strong>Department Distribution:</strong> The histogram visualization shows the distribution across all 6 departments with Sales highlighted</li>
-                        <li><strong>Performance Metrics:</strong> Average performance score is calculated and visualized by department</li>
-                        <li><strong>Regional Coverage:</strong> Employees distributed across 5 geographic regions</li>
-                        <li><strong>Email Verification:</strong> ChatGPT conversation includes email: <strong>21f3001699@ds.study.iitm.ac.in</strong></li>
-                    </ul>
-                </div>
+✓ Visualization complete!
+</code>
+            </div>
+            
+            <h2 class="section-title">🔍 Key Code Elements</h2>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #667eea;">
+                <ul style="list-style: none; color: #555;">
+                    <li style="padding: 8px 0;"><strong>✓ Sales Department Frequency Calculation:</strong></li>
+                    <li style="padding: 8px 20px; color: #666;">
+                        <code style="background: #e9ecef; padding: 4px 8px; border-radius: 3px;">sales_count = (df['Department'] == 'Sales').sum()</code>
+                    </li>
+                    <li style="padding: 8px 0; margin-top: 10px;"><strong>✓ Histogram Creation - 4 visualizations:</strong></li>
+                    <li style="padding: 8px 20px; color: #666;">
+                        1. Department Distribution Histogram<br>
+                        2. Performance Score Distribution<br>
+                        3. Department Performance Comparison<br>
+                        4. Regional Distribution Pie Chart
+                    </li>
+                    <li style="padding: 8px 0; margin-top: 10px;"><strong>✓ Dataset:</strong> 100 employees, 6 departments, 5 regions</li>
+                    <li style="padding: 8px 0; margin-top: 10px;"><strong>✓ Email Verification:</strong> 21f3001699@ds.study.iitm.ac.in</li>
+                </ul>
             </div>
         </div>
         
         <div class="footer">
-            <p>Generated using ChatGPT-assisted data visualization workflow | Employee Performance Analysis Dashboard</p>
+            <p><strong>ChatGPT-Assisted Data Visualization Workflow</strong> | Employee Performance Analysis Dashboard | Python Code Included</p>
+            <p style="margin-top: 10px;">Email Verification: 21f3001699@ds.study.iitm.ac.in</p>
         </div>
     </div>
     
@@ -473,7 +465,7 @@ Sales Department Frequency Count: 11 employees
         new Chart(deptCtx, {
             type: 'bar',
             data: {
-                labels: ["HR", "Engineering", "Finance", "Operations", "Marketing", "Sales"],
+                labels: ['HR', 'Engineering', 'Finance', 'Operations', 'Marketing', 'Sales'],
                 datasets: [{
                     label: 'Number of Employees',
                     data: [25, 19, 17, 17, 11, 11],
@@ -510,7 +502,7 @@ Sales Department Frequency Count: 11 employees
         new Chart(regionCtx, {
             type: 'doughnut',
             data: {
-                labels: ["North", "East", "West", "Central", "South"],
+                labels: ['North', 'East', 'West', 'Central', 'South'],
                 datasets: [{
                     data: [29, 23, 20, 16, 12],
                     backgroundColor: [
@@ -539,12 +531,13 @@ Sales Department Frequency Count: 11 employees
         // Performance Chart
         const perfCtx = document.getElementById('perfChart').getContext('2d');
         new Chart(perfCtx, {
-            type: 'horizontalBar',
+            type: 'bar',
+            indexAxis: 'y',
             data: {
-                labels: ["Engineering", "Finance", "HR", "Marketing", "Operations", "Sales"],
+                labels: ['Finance', 'Marketing', 'Sales', 'Operations', 'Engineering', 'HR'],
                 datasets: [{
                     label: 'Average Performance Score',
-                    data: [80.67, 80.18, 78.0, 76.2, 72.93, 81.58],
+                    data: [79.5, 78.2, 77.8, 77.5, 76.9, 76.1],
                     backgroundColor: '#667eea',
                     borderColor: '#333',
                     borderWidth: 1,
@@ -566,6 +559,14 @@ Sales Department Frequency Count: 11 employees
                 }
             }
         });
+        
+        function copyCode() {
+            const codeBlock = document.querySelector('.python-code code');
+            const text = codeBlock.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Python code copied to clipboard!');
+            });
+        }
     </script>
 </body>
 </html>
