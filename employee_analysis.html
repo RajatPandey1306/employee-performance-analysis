@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance Analysis Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .email-verification {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .metric-card h3 {
+            color: #667eea;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .metric-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .metric-card .subtext {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chart-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+        }
+        
+        .insights {
+            background: #f0f4ff;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            margin-top: 30px;
+        }
+        
+        .insights h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .insights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .insights li {
+            padding: 10px 0;
+            color: #555;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .insights li:last-child {
+            border-bottom: none;
+        }
+        
+        .insights li:before {
+            content: "→ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Employee Performance Analysis</h1>
+            <p>Data-Driven Insights for Strategic Workforce Planning</p>
+            <div class="email-verification">
+                📧 Verification Email: 21f3001699@ds.study.iitm.ac.in
+            </div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>Total Employees</h3>
+                <div class="value">100</div>
+                <div class="subtext">Across all departments</div>
+            </div>
+            <div class="metric-card">
+                <h3>Sales Department</h3>
+                <div class="value">11</div>
+                <div class="subtext">Employees in focus</div>
+            </div>
+            <div class="metric-card">
+                <h3>Departments</h3>
+                <div class="value">6</div>
+                <div class="subtext">Total departments</div>
+            </div>
+            <div class="metric-card">
+                <h3>Regions</h3>
+                <div class="value">5</div>
+                <div class="subtext">Geographic distribution</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h2>📊 Department Distribution</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="deptChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <h2>🌍 Regional Distribution</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="regionChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <h2>⭐ Average Performance by Department</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="perfChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insights">
+                <h2>📈 Key Insights & Recommendations</h2>
+                <ul>
+                    <li><strong>Department Focus:</strong> Sales department has 11 employees, representing a key operational unit</li>
+                    <li><strong>Balanced Distribution:</strong> Workforce is evenly distributed across 6 departments</li>
+                    <li><strong>Regional Coverage:</strong> 5-region distribution supports market expansion strategy</li>
+                    <li><strong>Performance Tracking:</strong> Continuous monitoring of departmental performance metrics</li>
+                    <li><strong>Resource Allocation:</strong> Data supports strategic hiring and retention planning</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Generated using ChatGPT-assisted data visualization workflow | Employee Performance Analysis Dashboard</p>
+        </div>
+    </div>
+    
+    <script>
+        // Department Distribution Chart
+        const deptCtx = document.getElementById('deptChart').getContext('2d');
+        new Chart(deptCtx, {
+            type: 'bar',
+            data: {
+                labels: ["HR", "Engineering", "Finance", "Operations", "Marketing", "Sales"],
+                datasets: [{
+                    label: 'Number of Employees',
+                    data: [25, 19, 17, 17, 11, 11],
+                    backgroundColor: [
+                        '#667eea',
+                        '#764ba2',
+                        '#f093fb',
+                        '#4facfe',
+                        '#00f2fe',
+                        '#43e97b'
+                    ],
+                    borderColor: '#333',
+                    borderWidth: 2,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 5 }
+                    }
+                }
+            }
+        });
+        
+        // Regional Distribution Chart
+        const regionCtx = document.getElementById('regionChart').getContext('2d');
+        new Chart(regionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ["North", "East", "West", "Central", "South"],
+                datasets: [{
+                    data: [29, 23, 20, 16, 12],
+                    backgroundColor: [
+                        '#FF6B6B',
+                        '#4ECDC4',
+                        '#45B7D1',
+                        '#FFA07A',
+                        '#98D8C8'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 15, font: { size: 12 } }
+                    }
+                }
+            }
+        });
+        
+        // Performance Chart
+        const perfCtx = document.getElementById('perfChart').getContext('2d');
+        new Chart(perfCtx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Engineering", "Finance", "HR", "Marketing", "Operations", "Sales"],
+                datasets: [{
+                    label: 'Average Performance Score',
+                    data: [80.67, 80.18, 78.0, 76.2, 72.93, 81.58],
+                    backgroundColor: '#667eea',
+                    borderColor: '#333',
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
